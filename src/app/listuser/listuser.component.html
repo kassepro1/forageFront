@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Logo</a>
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 2</a>
+    </li>
+
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Dropdown link
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<button mat-button (click)="openDialog()"><i class="material-icons">add</i>Ajouter</button>
+
+<div class="mat-elevation-z8 spacer">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" class="table table-bordered " matSort>
+
+    <!-- Position Column -->
+    <!-- <ng-container matColumnDef="nom">
+       <th mat-header-cell *matHeaderCellDef> Nom </th>
+       <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+     </ng-container>-->
+    <ng-container matColumnDef="nom" >
+      <th mat-header-cell *matHeaderCellDef>Nom</th>
+
+      <td mat-cell *matCellDef="let element">  {{ element["nom"]}} </td>
+    </ng-container>
+    <ng-container matColumnDef="prenom" >
+      <th mat-header-cell *matHeaderCellDef>Prenom</th>
+
+      <td mat-cell *matCellDef="let element">  {{ element["prenom"]}} </td>
+    </ng-container>
+    <ng-container matColumnDef="email" >
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+
+      <td mat-cell *matCellDef="let element">  {{ element["email"]}} </td>
+    </ng-container>
+    <ng-container matColumnDef="username" >
+      <th mat-header-cell *matHeaderCellDef>Login</th>
+
+      <td mat-cell *matCellDef="let element">  {{ element["username"]}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action" >
+      <th mat-header-cell *matHeaderCellDef> Action</th>
+
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" matTooltip="Visualiser" (click)="openEditUserDialog(element,true)">
+          <mat-icon  >remove_red_eye</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="openEditUserDialog(element,true)" matTooltip="Modifier">
+          <mat-icon style="font-size: 20px">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn"   matTooltip="Supprimer">
+          <mat-icon >delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
