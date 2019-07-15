@@ -23,6 +23,7 @@ import { AbonnementComponent } from './abonnement/abonnement.component';
 import { FactureComponent } from './facture/facture.component';
 
 const appRoutes: Routes = [
+  {path: 'facture', component: FactureComponent},
   {path: 'village', component: VillageComponent},
   {path: 'abonnement', component: AbonnementComponent},
   {path: 'user', component: ListuserComponent},

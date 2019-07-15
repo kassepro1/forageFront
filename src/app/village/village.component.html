@@ -1,60 +1,71 @@
+<fieldset class="border p-2 text-center" >
 <h2 mat-dialog-title></h2>
 <mat-dialog-content >
 
-  <div>
-    <span >Ajouter Abonnement</span>
-  </div>
-
+  <legend class="w-auto">
+  Ajouter Abonnement</legend>
   <form class="example-container" [formGroup]="addAbonnementForm">
-    <div class="row " style="padding-left: 25px">
+    <div class="row " >
       <input matInput   formControlName="id" class="hidden">
-
-      <div class="form-group">
-          <mat-form-field>
-            <input matInput placeholder="Nom Village" formControlName="nomVillage" required (blur)="villageExist($event.target.value)">
+      <div class="form-group col-6">
+        <label class="control-label">Nom Village:</label>
+          <mat-form-field style="margin-left: 45px;">
+            <input matInput placeholder="Nom Village" class="form-control" formControlName="nomVillage" required (blur)="villageExist($event.target.value)">
           </mat-form-field>
       </div>
-      <div class="form-group">
-        <mat-form-field>
-          <input matInput placeholder="Nom Complet " formControlName="nomFamille" required>
+      <div class="form-group col-6">
+        <label class="control-label">Nom Complet:</label>
+        <mat-form-field style="margin-left: 45px;">
+          <input matInput placeholder="Nom Complet" class="form-control" formControlName="nomFamille" required>
         </mat-form-field>
       </div>
     </div>
-    <div class="row " style="padding-left: 25px">
-      <div class="form-group">
-        <mat-form-field>
-          <input matInput placeholder="Telephone " formControlName="tel" required>
+
+    <div class="row ">
+      <div class="form-group col-6">
+        <label class="control-label">Téléphone:</label>
+        <mat-form-field style="margin-left: 55px;">
+          <input matInput placeholder="Telephone" class="form-control" formControlName="tel"  required>
         </mat-form-field>
       </div>
-      <div class="form-group">
-        <mat-form-field>
-          <input matInput placeholder="Adresse " formControlName="adresse" required>
+      <div class="form-group col-6">
+        <label class="control-label">Adresse:</label>
+        <mat-form-field style="margin-left: 85px;">
+          <input matInput placeholder="Adresse" class="form-control" formControlName="adresse" required>
         </mat-form-field>
       </div>
     </div>
-    <div class="row " style="padding-left: 25px">
-      <div class="form-group">
-        <label class="control-label">Est Chef:</label>
-        <mat-radio-group aria-label="Est Chef" formControlName="estchef">
-          <mat-radio-button value="1" [disabled]="ischef" >Oui </mat-radio-button>
-          <mat-radio-button value="2">Non</mat-radio-button>
+
+    <div class="row">
+      <div class="form-group col-6">
+        <label class="control-label radio-inline">Est Chef:
+        <mat-radio-group aria-label="Est Chef"  formControlName="estchef" style="margin-left: 50px;">
+          <mat-radio-button value="1"  [disabled]="ischef" style="display: inline-block" >Oui </mat-radio-button>
+          <mat-radio-button value="2"  style="display: inline-block">Non</mat-radio-button>
         </mat-radio-group>
+        </label>
       </div>
-      <div class="form-group">
-        <mat-form-field>
-          <input matInput placeholder="Numero abonnement" formControlName="numero" required>
+      <div class="form-group col-6">
+        <label class="control-label ">Compteur:</label>
+        <mat-form-field style="margin-left: 75px;">
+          <input matInput placeholder="Numero Compteur" class="form-control" formControlName="numerocompteur" required>
         </mat-form-field>
       </div>
     </div>
-      <div class="row " style="padding-left: 25px">
-      <div class="form-group">
-        <mat-form-field>
-          <input matInput placeholder="Description  Abonnement " formControlName="description" required>
+
+
+    <div class="row ">
+       <div class="form-group col-6" >
+        <label class="control-label">Description:</label>
+        <mat-form-field style="margin-left: 45px;">
+          <input matInput placeholder="Description  Abonnement" class="form-control" formControlName="description" required>
         </mat-form-field>
-      </div>
-      <div class="form-group">
-        <mat-form-field>
-          <input matInput placeholder="Numero Compteur" formControlName="numerocompteur" required>
+       </div>
+
+      <div class="form-group col-6">
+        <label class="control-label">Numéro :</label>
+        <mat-form-field style="margin-left: 85px;">
+          <input matInput placeholder="Numero abonnement" class="form-control"  formControlName="numero" required>
         </mat-form-field>
       </div>
     </div>
@@ -62,7 +73,62 @@
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close (click)="addAbonnement()" class="btn btn-success"><span >Ajouter</span></button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="btn btn-danger">Annuler</button>
+  <button mat-button mat-dialog-close (click)="addAbonnement()" class="btn btn-success" style="float: left;"><span >Ajouter</span></button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="btn btn-danger " style="float: right;">Annuler</button>
 </mat-dialog-actions>
 
+</fieldset>
+
+<div class="mat-elevation-z8 spacer" style="margin-top:50px;">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" class="table table-bordered " matSort>
+
+    <!-- Position Column -->
+    <!-- <ng-container matColumnDef="nom">
+       <th mat-header-cell *matHeaderCellDef> Nom </th>
+       <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+     </ng-container>-->
+    <ng-container matColumnDef="nom" >
+      <th mat-header-cell *matHeaderCellDef>Nom</th>
+
+      <td mat-cell *matCellDef="let element">  {{ element["nom"]}} </td>
+    </ng-container>
+    <ng-container matColumnDef="prenom" >
+      <th mat-header-cell *matHeaderCellDef>Prenom</th>
+
+      <td mat-cell *matCellDef="let element">  {{ element["prenom"]}} </td>
+    </ng-container>
+    <ng-container matColumnDef="email" >
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+
+      <td mat-cell *matCellDef="let element">  {{ element["email"]}} </td>
+    </ng-container>
+    <ng-container matColumnDef="username" >
+      <th mat-header-cell *matHeaderCellDef>Login</th>
+
+      <td mat-cell *matCellDef="let element">  {{ element["username"]}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action" >
+      <th mat-header-cell *matHeaderCellDef> Action</th>
+
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" matTooltip="Visualiser" (click)="openEditUserDialog(element,true)">
+          <mat-icon  >remove_red_eye</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="openEditUserDialog(element,true)" matTooltip="Modifier">
+          <mat-icon style="font-size: 20px">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn"   matTooltip="Supprimer">
+          <mat-icon >delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
