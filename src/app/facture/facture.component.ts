@@ -26,7 +26,7 @@ export class FactureComponent implements OnInit {
 
   ngOnInit() {
   }
-  public addFacture() {
+  public addFactureF() {
     console.log(this.addFactureForm.value);
     this.service.addFacture(this.addFactureForm.value).subscribe(
       rep => {
