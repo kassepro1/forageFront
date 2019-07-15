@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class VillageComponent implements OnInit {
   isLinear = false;
-
+public  ischef = false ;
   public addAbonnementForm = new FormGroup({
     id: new FormControl('', Validators.required),
     nomVillage: new FormControl('', Validators.required),
@@ -45,6 +45,7 @@ export class VillageComponent implements OnInit {
      rep => {
        console.log(rep);
        if (rep != null) {
+         this.ischef = true ;
          alert('Ce village existe et a un chef');
        } else {
          alert('Ce village n\' existe pas et a besoin d\'un  chef');

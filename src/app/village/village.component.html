@@ -34,7 +34,7 @@
       <div class="form-group">
         <label class="control-label">Est Chef:</label>
         <mat-radio-group aria-label="Est Chef" formControlName="estchef">
-          <mat-radio-button value="1">Oui </mat-radio-button>
+          <mat-radio-button value="1" [disabled]="ischef" >Oui </mat-radio-button>
           <mat-radio-button value="2">Non</mat-radio-button>
         </mat-radio-group>
       </div>
