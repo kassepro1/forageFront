@@ -37,9 +37,14 @@ export class LoginService {
     return this.http.post(this.host + '/admin/luser' , user );
 
   }
-  public addAbonnement(ab) {
+  public addFacture(fc) {
 
-    return this.http.post(this.host + '/admin/addAbonnement' , ab );
+    return this.http.post(this.host + '/admin/addFacture' , fc );
+
+  }
+
+  public addAbonnement(ab) {
+ return this.http.post(this.host + '/admin/addAbonnement' , ab );
 
   }
 
@@ -51,5 +56,8 @@ export class LoginService {
 
   public findVillage(nomVillage) {
     return  this.http.get(this.host + '/admin/findVillage/' + nomVillage );
+  }
+  public findCompteur(numeroCompteur) {
+    return  this.http.get(this.host + '/admin/findCompteur/' + numeroCompteur );
   }
 }

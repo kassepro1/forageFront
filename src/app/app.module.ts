@@ -20,6 +20,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ListuserComponent } from './listuser/listuser.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
+import { FactureComponent } from './facture/facture.component';
 
 const appRoutes: Routes = [
   {path: 'village', component: VillageComponent},
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
     VillageComponent,
     ListuserComponent,
     AdduserComponent,
-    AbonnementComponent
+    AbonnementComponent,
+    FactureComponent
   ],
   entryComponents: [AdduserComponent , VillageComponent] ,
   imports: [

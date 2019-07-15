@@ -20,7 +20,9 @@ public  ischef = false ;
     adresse: new FormControl('', [Validators.required, Validators.email]),
     tel: new FormControl('', Validators.required),
     estchef: new FormControl('', Validators.required),
+    numero: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
+    numerocompteur: new FormControl('', Validators.required),
 
   });
   constructor(private service: LoginService , public dialog: MatDialog , private appRouter: Router) {}
@@ -48,7 +50,7 @@ public  ischef = false ;
          this.ischef = true ;
          alert('Ce village existe et a un chef');
        } else {
-         alert('Ce village n\' existe pas et a besoin d\'un  chef');
+         alert('Ce village n\' existe pas et n\'a pas de  chef');
        }
 
      }, error1 => {
