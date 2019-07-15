@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../login.service';
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -14,6 +14,8 @@ export class FactureComponent implements OnInit {
   isLinear = false;
   public addFactureForm = new FormGroup({
     id: new FormControl('', Validators.required),
+    numerocompteur: new FormControl('', Validators.required),
+    cumulCons: new FormControl('', Validators.required),
     consnetChiffre: new FormControl('', Validators.required),
     consnetLettre: new FormControl('', Validators.required),
     // tslint:disable-next-line:object-literal-sort-keys
@@ -26,8 +28,8 @@ export class FactureComponent implements OnInit {
 
   ngOnInit() {
   }
-  public addFactureF() {
-    console.log(this.addFactureForm.value);
+  public addFacture() {
+   console.log(this.addFactureForm.value);
     this.service.addFacture(this.addFactureForm.value).subscribe(
       rep => {
         alert('Facture ajoute avec succes');

@@ -22,14 +22,17 @@ import { AdduserComponent } from './adduser/adduser.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
 import { FactureComponent } from './facture/facture.component';
 import { ReglementComponent } from './reglement/reglement.component';
+import { FacturesComponent } from './factures/factures.component';
+import { ListfacturesComponent } from './listfactures/listfactures.component';
 
 const appRoutes: Routes = [
   {path: 'reglement', component: ReglementComponent},
   {path: 'facture', component: FactureComponent},
   {path: 'village', component: VillageComponent},
+  {path: 'factures', component: ListfacturesComponent},
   {path: 'abonnement', component: AbonnementComponent},
   {path: 'user', component: ListuserComponent},
-  {path: '', redirectTo: '/village', pathMatch: 'full'},
+  {path: '', redirectTo: '/abonnement', pathMatch: 'full'},
 ];
 @NgModule({
   declarations: [
@@ -39,9 +42,9 @@ const appRoutes: Routes = [
     AdduserComponent,
     AbonnementComponent,
     FactureComponent,
-    ReglementComponent
+    ReglementComponent ,
   ],
-  entryComponents: [AdduserComponent , VillageComponent] ,
+  entryComponents: [AdduserComponent , VillageComponent , FactureComponent] ,
   imports: [
     BrowserModule ,
     BrowserAnimationsModule ,
