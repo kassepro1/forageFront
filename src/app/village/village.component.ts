@@ -20,7 +20,9 @@ export class VillageComponent implements OnInit {
     adresse: new FormControl('', [Validators.required, Validators.email]),
     tel: new FormControl('', Validators.required),
     estchef: new FormControl('', Validators.required),
+    numero: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
+    numerocompteur: new FormControl('', Validators.required),
 
   });
   constructor(private service: LoginService , public dialog: MatDialog , private appRouter: Router) {}
@@ -47,7 +49,7 @@ export class VillageComponent implements OnInit {
        if (rep != null) {
          alert('Ce village existe et a un chef');
        } else {
-         alert('Ce village n\' existe pas et a besoin d\'un  chef');
+         alert('Ce village n\' existe pas et n\'a pas de  chef');
        }
 
      }, error1 => {
