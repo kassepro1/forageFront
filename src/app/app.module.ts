@@ -21,8 +21,10 @@ import { ListuserComponent } from './listuser/listuser.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
 import { FactureComponent } from './facture/facture.component';
+import { ReglementComponent } from './reglement/reglement.component';
 
 const appRoutes: Routes = [
+  {path: 'reglement', component: ReglementComponent},
   {path: 'facture', component: FactureComponent},
   {path: 'village', component: VillageComponent},
   {path: 'abonnement', component: AbonnementComponent},
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     ListuserComponent,
     AdduserComponent,
     AbonnementComponent,
-    FactureComponent
+    FactureComponent,
+    ReglementComponent
   ],
   entryComponents: [AdduserComponent , VillageComponent] ,
   imports: [

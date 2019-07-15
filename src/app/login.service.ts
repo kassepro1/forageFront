@@ -42,7 +42,11 @@ export class LoginService {
     return this.http.post(this.host + '/admin/addFacture' , fc );
 
   }
+  public addReglement(r) {
 
+    return this.http.post(this.host + '/admin/addReglement' , r );
+
+  }
   public addAbonnement(ab) {
  return this.http.post(this.host + '/admin/addAbonnement' , ab );
 
@@ -56,6 +60,9 @@ export class LoginService {
 
   public findVillage(nomVillage) {
     return  this.http.get(this.host + '/admin/findVillage/' + nomVillage );
+  }
+  public findFacture(numero) {
+    return  this.http.get(this.host + '/admin/findFacture/' + numero );
   }
   public findCompteur(numeroCompteur) {
     return  this.http.get(this.host + '/admin/findCompteur/' + numeroCompteur );
